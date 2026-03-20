@@ -3,12 +3,28 @@
 }
 
 .customerDetails {
-  background-color: cornflowerblue;
+  background-color: wheat;
   border-style: solid;
-  width: 85%;
+  width: 30%;
   margin: auto;
   margin-bottom: 50px;
-  border-radius: 30px;
+  border-radius: 10px;
+}
+
+.nappi {
+  border-radius: 10px;
+  margin-left: 10px;
+  font-size: 26px;
+  background-color: burlywood;
+  color: white;
+}
+
+button {
+  border-radius: 10px;
+  margin-left: 10px;
+  font-size: 26px;
+  background-color: burlywood;
+  color: white;
 
 }
 

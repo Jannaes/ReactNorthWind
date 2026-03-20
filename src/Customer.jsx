@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 
 
+
     // props on nimeltään customer
     const Customer = ({customer}) => {
 
@@ -10,10 +11,13 @@ import './App.css';
 
   return (
     <div className='customerDiv'>
-        <h4 onMouseEnter={() => setShowDetails(true)}
-            onMouseLeave={() => setShowDetails(false)}
+        <h4 
+            onClick={() => setShowDetails(!showDetails)} 
             >{customer.companyName}
         </h4> 
+
+{/* // toinen vaihtoehto: onMouseEnter={() => setShowDetails(true)}
+//onMouseLeave={() => setShowDetails(false)} */}
 
         {showDetails && <div className="customerDetails" >
                 <table>
