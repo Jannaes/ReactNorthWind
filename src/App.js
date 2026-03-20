@@ -2,11 +2,11 @@ import './App.css';
 import Laskuri from './Laskuri';
 import Viesti from './Viesti';
 import {useState} from 'react';
+import Posts from './Posts';
 
 const App = () => {
 
   // App komponentin tila
-  const [x, setX] = useState("")
   const [showLaskuri, setShowLaskuri] = useState(false)
 
   const huomio = () => {
@@ -17,6 +17,8 @@ const App = () => {
   return (
     <div className="App">
         <h1>Hello from React</h1>
+
+        <Posts />
 
         {showLaskuri && <Laskuri huomio={huomio}/>}
 
