@@ -18,9 +18,7 @@ const CustomerList = () => {
         .then(data => {
             setCustomers(data)
         })
-
-
-    },[]
+    },[lisäystila]
     )
 
   return (
@@ -30,7 +28,7 @@ const CustomerList = () => {
             {!lisäystila && <button className="nappi" onClick={() => setLisäystila(true)}>Add new</button>}
         </h1>
 
-            {lisäystila && <CustomerAdd />}
+            {lisäystila && <CustomerAdd setLisäystila={setLisäystila} />}
 
         {
             showCustomers && customers && customers.map(c => (

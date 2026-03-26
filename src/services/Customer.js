@@ -11,4 +11,4 @@ const create = newCustomer => {
     return axios.post(baseUrl, newCustomer)
 }
 
-export default { getAll }
+export default { getAll, create}
