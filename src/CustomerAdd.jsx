@@ -3,7 +3,7 @@ import './App.css';
 import CustomerService from './services/Customer'
 
 
-const CustomerAdd = ({setLisäystila}) => {
+const CustomerAdd = ({setLisäystila, setIsPositive, setMessage, setShowMessage}) => {
 
     // Komponentin tilan määritys
 
@@ -42,12 +42,25 @@ const handleSubmit = (event) => {
     CustomerService.create(newCustomer)
     .then(response => {
         if (response.status === 200) {
-            alert("Added new Customer: " + newCustomer.companyName)
+            setMessage("Added new Customer: " + newCustomer.companyName)
+            setIsPositive(true)
+            setShowMessage(true)
+
+                setTimeout(() => {
+                    setShowMessage(false)
+                }, 5000)  // ilmoitus näkyy 5 sekuntia
+
             setLisäystila(false)
     }
         })
         .catch(error => {
-            alert("Error")
+            setMessage(error.message)
+            setIsPositive(false)
+            setShowMessage(true)
+                setTimeout(() => {
+                    setShowMessage(false)
+                }, 6000)  // ilmoitus näkyy 6 sekuntia
+
         })
     }
 

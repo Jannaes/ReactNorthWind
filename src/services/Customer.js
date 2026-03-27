@@ -11,4 +11,16 @@ const create = newCustomer => {
     return axios.post(baseUrl, newCustomer)
 }
 
-export default { getAll, create}
+const remove = id => {
+    return axios.delete(`${baseUrl}/${id}`)
+
+}
+
+const update = (object) => {
+    return axios.put(`${baseUrl}/${object.customerId}`, object)
+}
+
+export default { getAll, create, remove, update}
+
+// sulkeiden sisällä oleva object voi olla nimeltään mikä vain, myöskään sulkuja ei välttämättä tarvita. Lisäksi metodin update voi nimetä kuinka haluaa, axios-kirjastosta tuleva put ei ole vapaasti määritettävissä
+
