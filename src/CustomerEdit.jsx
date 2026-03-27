@@ -69,49 +69,58 @@ const handleSubmit = (event) => {
         <h2>Customer Edit</h2>
 
         <form onSubmit={handleSubmit}>
-            <div>
+            <div className='form-row'>
+                <label>Customer ID</label>
                 <input type='text' value={newCustomerId} disabled />
             </div>
-            <div>
+            <div className='form-row'>
+                <label>Company name</label>
                 <input type='text' value={newCompanyName} onChange={({target}) =>setNewCompanyName(target.value)} required
                 placeholder='Company Name'/>
             </div>
-            <div>
+            <div className='form-row'>
+                <label>Contact name</label>
                 <input type='text' value={newContactName} onChange={({target}) =>setNewContactName(target.value)}
                 placeholder='Contact Name'/>
             </div>
-            <div>
+            <div className='form-row'>
+                <label>Contact Title</label>
                 <input type='text' value={newContactTitle} onChange={({target}) =>setNewContactTitle(target.value)}
                 placeholder='Contact Title'/>
             </div>
-            <div>
+            <div className='form-row'>
+                <label>Address</label>
                 <input type='text' value={newAddress} onChange={({target}) =>setNewAddress(target.value)}
                 placeholder='Address'/>
             </div>
-            <div>
+            <div className='form-row'>
+                <label>City</label>
                 <input type='text' value={newCity} onChange={({target}) =>setNewCity(target.value)}
                 placeholder='City'/>
             </div>
-            <div>
+            <div className='form-row'>
+                <label>Postal Code</label>
                 <input type='text' value={newPostalCode} onChange={({target}) =>setNewPostalCode(target.value)}
                 placeholder='Postal Code'/>
             </div>
-            <div>
+            <div className='form-row'>
+                <label>Country</label>
                 <input type='text' value={newCountry} onChange={({target}) =>setNewCountry(target.value)}
                 placeholder='Country'/>
             </div>
-            <div>
+            <div className='form-row'>
+                <label>Phone</label>
                 <input type='text' value={newPhone} onChange={({target}) =>setNewPhone(target.value)}
                 placeholder='Phone'/>
             </div>
-            <div>
+            <div className='form-row'>
+                <label>Fax</label>
                 <input type='text' value={newFax} onChange={({target}) =>setNewFax(target.value)}
                 placeholder='Fax'/>
             </div>
 
-
-            <input type='submit' value='save' />
-            <input type='button' value='back' onClick={() => setMuokkaustila(false)} />
+            <button type="submit">Save</button>
+            <button type="button" onClick={() => setMuokkaustila(false)} >Back</button>
 
         </form>
 
@@ -120,3 +129,7 @@ const handleSubmit = (event) => {
 }
 
 export default CustomerEdit;
+
+
+            {/* <input type='submit' value='save' />
+            <input type='button' value='back' onClick={() => setMuokkaustila(false)} /> */}

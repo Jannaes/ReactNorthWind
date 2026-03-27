@@ -61,22 +61,70 @@ th {
 
 }
 
+ #edit {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
 
-.nappi {
+#edit h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-row input {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-row label {
+  outline: none;
+  text-align: left;
+
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+
+#userTable {
+  margin: auto;
+}
+
+/* .nappi {
   border-radius: 10px;
   margin-left: 10px;
   font-size: 26px;
   background-color: burlywood;
   color: white;
-}
+} */
 
 button {
-  border-radius: 10px;
+  margin-top: 15px;
   margin-left: 10px;
+  margin-right: 10px;
+  padding: 8px 14 px;
+  border: none;
+  border-radius: 6px;
   font-size: 26px;
-  background-color: burlywood;
+  background-color: rgb(240, 211, 175);
+
   color: white;
+  cursor: pointer;
 }
+
+button:hover {
+  background-color: burlywood;
+}
+
 
 .posts {
   margin: auto;
