@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import UserService from './services/User'
+import User from './User'
+import UserAdd from './UserAdd'
+import UserEdit from './UserEdit'
 
 
 
@@ -21,7 +24,7 @@ const UserList = ({setIsPositive, setShowMessage, setMessage}) => {
         .then(data => {
             setUsers(data)
         })
-    },[lisäystila, reload, muokkaustila]  // jos joku näistä muuttuu, useEffect() -hook ajetaan
+    },[lisäystila, reload, muokkaustila]  // jos joku näistä muuttuu, useEffect() -hook ajetaan uudestaan 
     )
 
     // Hakukentän onChange tapahtumankäsittelijä
@@ -30,52 +33,63 @@ const UserList = ({setIsPositive, setShowMessage, setMessage}) => {
     }
 
 
-    const editUsers = (user) => {
+    const editUser = (user) => {
         setMuokattavaUser(user)
         setMuokkaustila(true)
     }
 
-    // ehdollinen renderöinti = {}
+    // ehdollinen renderöinti = {} 
 
   return (
     <>
         <h1><nobr>Users</nobr> 
+
+            {lisäystila && <UserAdd setLisäystila={setLisäystila} 
+            setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage} />}
 
             {!lisäystila && <button className="nappi" onClick={() => setLisäystila(true)}>Add new</button>} </h1>
 
             {!lisäystila && !muokkaustila && 
                 <input placeholder="Search by Lastname" value={search} onChange={handleSearchInputChange} />} 
 
+            {muokkaustila && <UserEdit setMuokkaustila={setMuokkaustila} 
+            setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
+            muokattavaUser={muokattavaUser}
+            />}
+                
 
-            <table id="userTable">
-                <thead>
-                    <tr>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
-                        <th>Email</th>
-                        <th>Accesslevel</th>
-                    </tr>
-                </thead>
-                <tbody>
-            
-                        {users && users.map(u => 
-                            {
-                                const lowerCaseName = u.lastname.toLowerCase()
-                                if (lowerCaseName.indexOf(search) > -1) {
-                                    return(
-                                        <tr key={u.userId}>
-                                            <td>{u.firstname}</td>
-                                            <td>{u.lastname}</td>
-                                            <td>{u.email}</td>
-                                            <td>{u.accesslevelId}</td>
-                                        </tr>
-                                )
-                                }
+
+            {!lisäystila && !muokkaustila &&
+                <table id="userTable">
+                    <thead>
+                        <tr>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>Email</th>
+                            <th>Accesslevel</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                        <tbody>
+                        {users && users.map(u => {
+                            const lowerCaseName = u.lastname.toLowerCase()
+
+                            if (lowerCaseName.indexOf(search) > -1) {
+                            
+                                return (
+                                <User key={u.userId} user={u} editUser={editUser} setIsPositive={setIsPositive}
+                                setMessage={setMessage} setShowMessage={setShowMessage} reload={reload}
+                                reloadNow={reloadNow}
+                                />
+                            )
                             }
-                        )
-                    }
-            </tbody>
-        </table>
+                        })}
+                        </tbody>
+                </table>
+            
+            }
+
+
     </>
   );
 }
