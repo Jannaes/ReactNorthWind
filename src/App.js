@@ -4,7 +4,14 @@ import Viesti from './Viesti';
 import Posts from './Posts';
 import {useState} from 'react';
 import CustomerList from './CustomerList';
+import UserList from './UserList';
 import Message from './Message';
+
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 
 const App = () => {
@@ -24,23 +31,48 @@ const App = () => {
 
   return (
     <div className="App">
-        <h1>Hello from React!</h1>
-        
-        {showMessage && <Message message={message} isPositive={isPositive} /> }
 
-        <CustomerList setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}/>
+        <Router>
+            <Navbar bg="dark" variant="dark">
+              <Nav className="mr-auto">
+                  <Nav.Link href='/customers'>Customers</Nav.Link>
+                  <Nav.Link href='/users'>Users</Nav.Link>
+                  <Nav.Link href='/posts'>Typicode posts</Nav.Link>
+                  <Nav.Link href='/laskuri'>Laskuri</Nav.Link>
+              </Nav>
+            </Navbar>
 
-        <Posts />
+          <h1>Northwind Corporation</h1>
+          
+          {showMessage && <Message message={message} isPositive={isPositive} /> }
 
-        {showLaskuri && <Laskuri huomio={huomio}/>}
+          <Routes>
+            <Route path="/Customers"
+              element={<CustomerList setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}/>}>
+            </Route>
 
-        {showLaskuri && <button onClick={() => setShowLaskuri(!showLaskuri)}>Piilota laskuri</button>}
+            <Route path="/Users"
+              element={<UserList setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}/>}>
+            </Route>
 
-        {!showLaskuri && <button onClick={() => setShowLaskuri(!showLaskuri)}>Näytä laskuri</button>}
+            <Route path="/posts"
+              element={<Posts />}>
+            </Route>
 
-        <Viesti teksti="tervehdys app komponentista"/>
+            <Route path="/laskuri" 
+              element={<Laskuri />}>
+            </Route>
 
+                {/* {showLaskuri && <Laskuri huomio={huomio}/>}
 
+                {showLaskuri && <button onClick={() => setShowLaskuri(!showLaskuri)}>Piilota laskuri</button>}
+
+                {!showLaskuri && <button onClick={() => setShowLaskuri(!showLaskuri)}>Näytä laskuri</button>}
+
+                <Viesti teksti="tervehdys app komponentista"/> */}
+
+          </Routes>
+        </Router>
     </div>
   );
 }

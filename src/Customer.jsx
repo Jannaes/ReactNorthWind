@@ -64,7 +64,7 @@ import CustomerService from './services/Customer'
     <div className='customerDiv'>
         <h4 
             onClick={() => setShowDetails(!showDetails)} 
-            >{customer.companyName} 
+            >{customer.companyName}, {customer.country}
         </h4> 
 
 {/*  toinen vaihtoehto: onMouseEnter={() => setShowDetails(true)}

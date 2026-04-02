@@ -40,13 +40,13 @@
   margin-bottom: 50px;
   border-radius: 10px;
   text-align: center;
-  
 }
+
 
 td, th {
   border: 1px solid;
   padding: 6px;
-  width: 25%;
+
 
 }
 
@@ -61,22 +61,75 @@ th {
 
 }
 
-
-.nappi {
-  border-radius: 10px;
-  margin-left: 10px;
-  font-size: 26px;
-  background-color: burlywood;
-  color: white;
+ #edit, #addNew {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-button {
-  border-radius: 10px;
-  margin-left: 10px;
-  font-size: 26px;
-  background-color: burlywood;
-  color: white;
+#edit, h2 {
+  margin-bottom: 20px;
+  text-align: center;
 }
+
+.form-row input {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-row label {
+  outline: none;
+  text-align: left;
+
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#addNew {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+
+  font-size: 16px;  /* lisää tämä */
+  font-family: Arial, sans-serif; /* valinnainen */
+}
+
+
+#userTable {
+  margin: 40px auto;
+  width: 60%;
+  border-collapse: collapse;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  background-color: white;
+}
+
+
+button, .nappi {
+  margin: 5px;
+  padding: 8px;
+  border: 2px solid;   /* näkyvä reuna */
+  border-radius: 6px;       /* pyöristetyt kulmat */
+  font-size: 20px;
+  background-color: rgb(240, 211, 175);
+  color: white;
+  cursor: pointer;
+}
+button:hover, .nappi:hover {
+  background-color: burlywood;
+}
+
 
 .posts {
   margin: auto;
