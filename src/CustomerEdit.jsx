@@ -7,7 +7,7 @@ const CustomerEdit = ({setMuokkaustila, setIsPositive, setMessage, setShowMessag
 
     // Komponentin tilan määritys
 
-    const [newCustomerId, setNewCustomerId] = useState(muokattavaCustomer.customerId)
+    const [newCustomerId] = useState(muokattavaCustomer.customerId)
     const [newCompanyName, setNewCompanyName] = useState(muokattavaCustomer.companyName)
     const [newContactName, setNewContactName] = useState(muokattavaCustomer.contactName)
     const [newContactTitle, setNewContactTitle] = useState(muokattavaCustomer.contactTitle)
@@ -129,7 +129,3 @@ const handleSubmit = (event) => {
 }
 
 export default CustomerEdit;
-
-
-            {/* <input type='submit' value='save' />
-            <input type='button' value='back' onClick={() => setMuokkaustila(false)} /> */}

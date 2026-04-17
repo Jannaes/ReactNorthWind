@@ -111,6 +111,3 @@ const handleSubmit = (event) => {
 
 export default UserEdit;
 
-
-            {/* <input type='submit' value='save' />
-            <input type='button' value='back' onClick={() => setMuokkaustila(false)} /> */}
