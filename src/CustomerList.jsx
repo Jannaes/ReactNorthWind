@@ -67,19 +67,22 @@ const CustomerList = ({setIsPositive, setShowMessage, setMessage}) => {
             />}
 
         {
-            !lisäystila && !muokkaustila && showCustomers && customers && customers.map(c => 
-                {
-                    const lowerCaseName = c.companyName.toLowerCase()
-                    if (lowerCaseName.indexOf(search) > -1) {
-                        return(
-                
-                    <Customer key={c.customerId} customer={c} reloadNow={reloadNow} reload={reload}
-                    setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
-                    editCustomer={editCustomer}/>
-                    )
-                    }
-                }
-            )
+            !lisäystila && !muokkaustila && showCustomers && customers && customers
+                .filter(c =>
+                    c.companyName.toLowerCase().includes(search)
+                )
+                .map(c => (
+                    <Customer
+                    key={c.customerId}
+                    customer={c}
+                    reloadNow={reloadNow}
+                    reload={reload}
+                    setIsPositive={setIsPositive}
+                    setMessage={setMessage}
+                    setShowMessage={setShowMessage}
+                    editCustomer={editCustomer}
+                    />
+                ))
 
         }
         
