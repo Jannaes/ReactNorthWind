@@ -1,26 +1,50 @@
 import axios from "axios"
 
-const baseUrl = "https://localhost:7087/api/customers"
+// const baseUrl = "https://localhost:7087/api/customers"
+const baseUrl = "https://nwbackendjanna-b5cubgdvfufefsbd.swedencentral-01.azurewebsites.net/api/customers"
 
+
+let token = null
+
+// Tokenin asettaminen, jotta sitä voidaan käyttää myöhemmin http-pyynnöissä
+const setToken = newToken => {
+    token = `bearer ${newToken}`
+}
+
+
+//
 const getAll = () => {
-    const request = axios.get(baseUrl)
+    // Tokenin lisääminen http-pyyntöön Authorization-headeriin
+    const config = {
+        headers: { Authorization: token },
+    }
+    const request = axios.get(baseUrl, config)
     return request.then(response => response.data)
 }
 
 const create = newCustomer => {
-    return axios.post(baseUrl, newCustomer)
+        const config = {
+        headers: { Authorization: token },
+    }
+    return axios.post(baseUrl, newCustomer, config)
 }
 
 const remove = id => {
-    return axios.delete(`${baseUrl}/${id}`)
+        const config = {
+        headers: { Authorization: token },
+    }
+    return axios.delete(`${baseUrl}/${id}`, config)
 
 }
 
 const update = (object) => {
-    return axios.put(`${baseUrl}/${object.customerId}`, object)
+        const config = {
+        headers: { Authorization: token },
+    }
+    return axios.put(`${baseUrl}/${object.customerId}`, object, config)
 }
 
-export default { getAll, create, remove, update}
+export default { getAll, create, remove, update, setToken}
 
 // sulkeiden sisällä oleva object voi olla nimeltään mikä vain, myöskään sulkuja ei välttämättä tarvita. Lisäksi metodin update voi nimetä kuinka haluaa, axios-kirjastosta tuleva put ei ole vapaasti määritettävissä
 

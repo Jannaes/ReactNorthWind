@@ -20,6 +20,11 @@ const UserList = ({setIsPositive, setShowMessage, setMessage}) => {
 
     // UseEffect ajetaan aina alussa kerran
     useEffect(() => {
+            // Tokenin asetus UserServiceen, jotta sitä voidaan käyttää kaikissa UserServiceen liittyvissä metodeissa
+        const token = localStorage.getItem('token')
+            UserService
+            .setToken(token)
+
         UserService.getAll()
         .then(data => {
             setUsers(data)

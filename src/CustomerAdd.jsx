@@ -38,6 +38,10 @@ const handleSubmit = (event) => {
         phone: newPhone,
         fax: newFax
     }
+    
+    // const token = localStorage.getItem('token')
+    //     CustomerService
+    //     .setToken(token)
 
     CustomerService.create(newCustomer)
     .then(response => {

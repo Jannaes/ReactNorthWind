@@ -2,10 +2,11 @@ import './App.css';
 import Laskuri from './Laskuri';
 import Viesti from './Viesti';
 import Posts from './Posts';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import CustomerList from './CustomerList';
 import UserList from './UserList';
 import Message from './Message';
+import Login from './Login';
 
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
@@ -20,18 +21,36 @@ const App = () => {
   const [showLaskuri, setShowLaskuri] = useState(false)
 
   //Statet messagen näyttämistä varten
-  const [showMessage, setShowMessage] = useState(false)
-  const [message, setMessage] = useState('')
-  const [isPositive, setIsPositive] = useState(false)
+  const [showMessage, setShowMessage] = useState('') 
+  const [message, setMessage] = useState('') 
+  const [isPositive, setIsPositive] = useState(true)
+  const [loggedInUser, setLoggedInUser] = useState('')
+  
 
-  const huomio = () => {
-    alert("Huomio!")
+  // Käydään läpi local storagen data, jos käyttäjä on jo kirjautunut aiemmin
+  useEffect(() => {
+    let storedUser = localStorage.getItem('username')
+    if (storedUser !== null) {
+      setLoggedInUser(storedUser)
+    }
+  }, [])
+
+
+  // Logout-napin tapahtumankäsittelijä 
+  const logout = () => {
+    localStorage.clear()
+    setLoggedInUser('')
   }
 
 
   return (
     <div className="App">
 
+      {!loggedInUser && <Login setIsPositive={setIsPositive} setMessage={setMessage} 
+      setShowMessage={setShowMessage} setLoggedInUser={setLoggedInUser}/>}
+
+
+{ loggedInUser && 
         <Router>
             <Navbar bg="dark" variant="dark">
               <Nav className="mr-auto">
@@ -39,6 +58,7 @@ const App = () => {
                   <Nav.Link href='/users'>Users</Nav.Link>
                   <Nav.Link href='/posts'>Typicode posts</Nav.Link>
                   <Nav.Link href='/laskuri'>Laskuri</Nav.Link>
+                  <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
               </Nav>
             </Navbar>
 
@@ -73,6 +93,8 @@ const App = () => {
 
           </Routes>
         </Router>
+
+}
     </div>
   );
 }
