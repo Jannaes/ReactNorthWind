@@ -1,6 +1,5 @@
 import './App.css';
 import Laskuri from './Laskuri';
-import Viesti from './Viesti';
 import Posts from './Posts';
 import {useState, useEffect} from 'react';
 import CustomerList from './CustomerList';
@@ -18,7 +17,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 const App = () => {
 
   // App komponentin tila
-  const [showLaskuri, setShowLaskuri] = useState(false)
+  // const [showLaskuri, setShowLaskuri] = useState(false)
 
   //Statet messagen näyttämistä varten
   const [showMessage, setShowMessage] = useState('') 

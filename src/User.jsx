@@ -6,7 +6,7 @@ import UserService from './services/User'
     const User = ({user, editUser, setIsPositive, setMessage, setShowMessage, reload, reloadNow}) => {
 
     // Komponentin tilan määritys
-    const [showDetails, setShowDetails] = useState(false)
+    // const [showDetails, setShowDetails] = useState(false)
 
     const deleteUser = (user) => {
         let vastaus = window.confirm(`Remove User ${user.firstname} ${user.lastname} `)

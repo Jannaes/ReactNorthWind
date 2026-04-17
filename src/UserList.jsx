@@ -76,19 +76,22 @@ const UserList = ({setIsPositive, setShowMessage, setMessage}) => {
                         </tr>
                     </thead>
                         <tbody>
-                        {users && users.map(u => {
-                            const lowerCaseName = u.lastname.toLowerCase()
-
-                            if (lowerCaseName.indexOf(search) > -1) {
-                            
-                                return (
-                                <User key={u.userId} user={u} editUser={editUser} setIsPositive={setIsPositive}
-                                setMessage={setMessage} setShowMessage={setShowMessage} reload={reload}
+                        {users && users
+                            .filter(u =>
+                                u.lastname.toLowerCase().includes(search)
+                            )
+                            .map(u => (
+                                <User
+                                key={u.userId}
+                                user={u}
+                                editUser={editUser}
+                                setIsPositive={setIsPositive}
+                                setMessage={setMessage}
+                                setShowMessage={setShowMessage}
+                                reload={reload}
                                 reloadNow={reloadNow}
                                 />
-                            )
-                            }
-                        })}
+                            ))}
                         </tbody>
                 </table>
             
