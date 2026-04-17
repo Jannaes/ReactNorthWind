@@ -8,4 +8,8 @@ const authenticate = (userForAuth) => {
     return request.then(response => response)
 }
 
-export default { authenticate }
+const AuthService = {
+    authenticate
+}
+
+export default AuthService 

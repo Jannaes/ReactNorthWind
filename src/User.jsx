@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './App.css';
 import UserService from './services/User'
 

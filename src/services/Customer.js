@@ -44,7 +44,15 @@ const update = (object) => {
     return axios.put(`${baseUrl}/${object.customerId}`, object, config)
 }
 
-export default { getAll, create, remove, update, setToken}
+const CustomerService = {
+    setToken,
+    getAll,
+    create,
+    remove,
+    update
+}
+
+export default CustomerService
 
 // sulkeiden sisällä oleva object voi olla nimeltään mikä vain, myöskään sulkuja ei välttämättä tarvita. Lisäksi metodin update voi nimetä kuinka haluaa, axios-kirjastosta tuleva put ei ole vapaasti määritettävissä
 
