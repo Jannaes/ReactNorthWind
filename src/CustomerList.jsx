@@ -20,6 +20,12 @@ const CustomerList = ({setIsPositive, setShowMessage, setMessage}) => {
 
     // UseEffect ajetaan aina alussa kerran
     useEffect(() => {
+
+        // Tokenin asetus CustomerServiceen, jotta sitä voidaan käyttää kaikissa CustomerServiceen liittyvissä metodeissa
+        const token = localStorage.getItem('token')
+            CustomerService
+            .setToken(token)
+
         CustomerService.getAll()
         .then(data => {
             setCustomers(data)
