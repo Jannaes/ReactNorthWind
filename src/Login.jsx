@@ -4,7 +4,7 @@ import LoginService from './services/Auth'
 import md5 from 'md5'
 
 
-const Login = ({setIsPositive, setMessage, setShowMessage, setLoggedInUser}) => {
+const Login = ({setIsPositive, setMessage, setShowMessage, setLoggedInUser, setAccessLevelId}) => {
 
     // Komponentin tilan määritys
 
@@ -30,11 +30,11 @@ const handleSubmit = (event) => {
 
         // Tallennetaan token, username ja accesslevelId local storageen, jotta niitä voidaan käyttää muualla sovelluksessa (F12 Application välilehti)
         localStorage.setItem('username', response.data.username)  
-        localStorage.setItem('accesslevelId', response.data.accesslevelId)
+        localStorage.setItem('accesslevelId', response.data.accesslevelId) 
         localStorage.setItem('token', response.data.token )
 
         setLoggedInUser(response.data.username) // App-komponentin state, joka kertoo onko käyttäjä kirjautuneena sisään vai ei
-        
+        setAccessLevelId(String(response.data.accesslevelId)) // App-komponentin state, joka kertoo käyttäjän access levelin
 
        setMessage(`Logged in as: ${userForAuth.username}`)  // '${}' = template string-syntaksi
        setIsPositive(true)
