@@ -122,7 +122,7 @@ const handleSubmit = (event) => {
                 <label>Fax</label>
                 <input type='text' value={newFax} onChange={({target}) =>setNewFax(target.value)}
                 placeholder='Fax'/>
-    </div>
+            </div>
 
             <button className="nappi" type="submit">Save</button>
             <button className="nappi" type="button" onClick={() => setLisäystila(false)} >Back</button>

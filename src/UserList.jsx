@@ -6,7 +6,6 @@ import UserAdd from './UserAdd'
 import UserEdit from './UserEdit'
 
 
-
 const UserList = ({setIsPositive, setShowMessage, setMessage}) => {
 
     // Komponentin tilan määritys
@@ -16,10 +15,10 @@ const UserList = ({setIsPositive, setShowMessage, setMessage}) => {
     const [reload, reloadNow] = useState(false)
     const [muokattavaUser, setMuokattavaUser] = useState(false)
     const [search, setSearch] = useState("")
-    
+
 
     // UseEffect ajetaan aina alussa kerran
-    useEffect(() => {
+    useEffect(() => { 
             // Tokenin asetus UserServiceen, jotta sitä voidaan käyttää kaikissa UserServiceen liittyvissä metodeissa
         const token = localStorage.getItem('token')
             UserService
@@ -61,7 +60,7 @@ const UserList = ({setIsPositive, setShowMessage, setMessage}) => {
             setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
             muokattavaUser={muokattavaUser}
             />}
-                
+   
 
 
             {!lisäystila && !muokkaustila &&
