@@ -82,24 +82,13 @@ const App = () => {
                 </Nav>
 
                 <Nav>
+                    <Nav.Link disabled style={{ color: 'lightgray' }}>
+                    👤 {loggedInUser}
+                    </Nav.Link>
                   <Nav.Link onClick={logout}>Logout</Nav.Link>
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
-
-            {/* <Navbar bg="dark" variant="dark">
-              <Nav className="me-auto">
-                  <Nav.Link as={Link} to="/customers">Customers</Nav.Link>
-
-                  {accesslevelId === "1" && (
-                  <Nav.Link as={Link} to="/users">Users</Nav.Link> )} // Näytä Users-linkki vain Access level 1:lle
-
-                  <Nav.Link as={Link} to="/products">Products</Nav.Link>
-                  <Nav.Link as={Link} to="/posts">Typicode posts</Nav.Link>
-                  <Nav.Link as={Link} to="/laskuri">Laskuri</Nav.Link>
-                  <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
-              </Nav>
-            </Navbar> */}
 
           <h1>Northwind Corporation</h1>
           

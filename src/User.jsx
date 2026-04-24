@@ -1,5 +1,6 @@
 import './App.css';
 import UserService from './services/User'
+import { FaTrash, FaEdit } from 'react-icons/fa'
 
     // props on nimeltään customer
     const User = ({user, editUser, setIsPositive, setMessage, setShowMessage, reload, reloadNow}) => {
@@ -66,8 +67,18 @@ import UserService from './services/User'
                 <td>{user.email}</td>
                 <td>{user.accesslevelId}</td>
                 <td>
-                    <button className="nappi" onClick={() => editUser(user)}>Edit</button>
-                    <button className="nappi" onClick={() => deleteUser(user)}>Delete</button>
+                    <button className="nappi" onClick={() => editUser(user)}
+                        title='Edit'>
+                    <FaEdit />
+                    </button>
+
+                    <button className="nappi" onClick={() => deleteUser(user)}
+                        title='Delete'>
+                    <FaTrash />
+                    </button>
+
+                    {/* <button className="nappi" onClick={() => editUser(user)}>Edit</button>
+                    <button className="nappi" onClick={() => deleteUser(user)}>Delete</button> */}
                 </td>
             </tr>
   )

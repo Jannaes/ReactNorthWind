@@ -4,7 +4,7 @@ import UserService from './services/User'
 import md5 from 'md5'
 
 
-const UserAdd = ({setLisäystila, setIsPositive, setMessage, setShowMessage}) => {
+const UserAdd = ({setLisäystila, setIsPositive, setMessage, setShowMessage, }) => {
 
     // Komponentin tilan määritys
 
@@ -14,19 +14,36 @@ const UserAdd = ({setLisäystila, setIsPositive, setMessage, setShowMessage}) =>
     const [newAccesslevelId, setNewAccesslevelId] = useState(2)  // oletuksena 2, voi olla myös 0 tai 1
     const [newUsername, setNewUsername] = useState('')
     const [newPassword, setNewPassword] = useState('')
-    
+    const [confirmPassword, setConfirmPassword] = useState('') // vahvistetaan salasana
+
+
+    const showError =
+        confirmPassword !== '' &&
+        confirmPassword.length >= newPassword.length &&
+        newPassword !== confirmPassword
+
+    const passwordsMatch = newPassword === confirmPassword
 
     //onSubmit tapahtumankäsittelijä funktio
 
 const handleSubmit = (event) => {
     event.preventDefault()
+
+    if (newPassword !== confirmPassword) {
+        setMessage("Passwords do not match")
+        setIsPositive(false)
+        setShowMessage(true)
+        return
+    }
+
       var newUser = {
         firstname: newFirstname,
         lastname: newLastname,
         email: newEmail,
         accesslevelId: parseInt(newAccesslevelId),
         username: newUsername,
-        password: md5(newPassword) // Salataan md5 kirjaston metodilla = hash
+        password: md5(newPassword)     // Salataan md5 kirjaston metodilla = hash
+
     }
 
 
@@ -93,9 +110,23 @@ const handleSubmit = (event) => {
                 <input type='password' value={newPassword} onChange={({target}) =>setNewPassword(target.value)}
                 placeholder='Password'/>
             </div>
-
+            <div className='form-row'>
+                <label>Confirm Password</label>
+                <input type='password' value={confirmPassword} onChange={({target}) =>setConfirmPassword(target.value) }
+                placeholder='Confirm Password' />
+                {showError && (
+                <p style={{ color: 'red' }}>
+                    Passwords do not match
+                </p>
+                    )}
+                {/* {confirmPassword !== '' && newPassword !== confirmPassword && (
+                <p style={{ color: 'red' }}>
+                    Passwords do not match
+                </p> */}
+    {/* )} */}
+            </div>
             
-            <button className="nappi" type="submit">Save</button>
+            <button className="nappi" type="submit" disabled={!passwordsMatch || confirmPassword === ''}>Save</button>
             <button className="nappi" type="button" onClick={() => setLisäystila(false)} >Back</button>
         </form>
 

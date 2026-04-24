@@ -1,5 +1,6 @@
 import './App.css';
 import ProductService from './services/Product'
+import { FaTrash, FaEdit } from 'react-icons/fa'
 
     // props on nimeltään customer
     const Product = ({product, editProduct, setIsPositive, setMessage, setShowMessage, reload, reloadNow}) => {
@@ -74,8 +75,18 @@ import ProductService from './services/Product'
 
 
                 <td>
-                    <button className="nappi" onClick={() => editProduct(product)}>Edit</button>
-                    <button className="nappi" onClick={() => deleteProduct(product)}>Delete</button>
+                    <button className="nappi" onClick={() => editProduct(product)}
+                        title='Edit'>
+                    <FaEdit />
+                    </button>
+
+                    <button className="nappi" onClick={() => deleteProduct(product)}
+                        title='Delete'>
+                    <FaTrash />
+                    </button>
+
+                    {/* <button className="nappi" onClick={() => editProduct(product)}>Edit</button>
+                    <button className="nappi" onClick={() => deleteProduct(product)}>Delete</button> */}
                 </td>
             </tr>
   )

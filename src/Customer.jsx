@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import CustomerService from './services/Customer'
+import { FaTrash, FaEdit } from 'react-icons/fa'
 
     // props on nimeltään customer
     const Customer = ({customer, editCustomer, setIsPositive, setMessage, setShowMessage, reload, reloadNow}) => {
@@ -73,8 +74,18 @@ import CustomerService from './services/Customer'
         {showDetails && <div className="customerDetails" >
                 <h3>{customer.companyName}</h3>
 
-                <button onClick={() => deleteCustomer(customer)}>Delete</button>
-                <button onClick={() => editCustomer(customer)}>Edit</button>
+                <button className="nappi" onClick={() => editCustomer(customer)}
+                    title='Edit'>
+                <FaEdit />
+                </button>
+
+                <button className="nappi" onClick={() => deleteCustomer(customer)}
+                    title='Delete'>
+                <FaTrash />
+                </button>
+
+                {/* <button onClick={() => deleteCustomer(customer)}>Delete</button>
+                <button onClick={() => editCustomer(customer)}>Edit</button> */}
 
                 <table>
                     <thead>
